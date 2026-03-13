@@ -1,0 +1,78 @@
+<!-- MiniBlog -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniBlog</title>
+</head>
+
+<body> 
+
+    <!-- Descripción -->
+    <header>
+        <h1>MiniBlog</h1>
+        <h2>Explora y comparte</h2>
+    </header>
+
+     <!-- Búsqueda -->
+    <section id="search">
+        <input type="text" id="searchInput" 
+            placeholder="Buscar por título o contenido..." />
+        <button id="searchButton">Buscar</button>
+    </section>
+
+        
+    <section id="uiState1">
+        <p id="status" >Estado: esperando búsqueda…</p>
+    </section>
+
+
+    <!-- Para las lista de publicaciones-->
+
+    <section>
+        <h2>Publicaciones</h2>
+        <ul id="postsList"></ul>
+    </section>
+
+
+
+    <!-- Formulario para crear una nueva publicación-->
+    <main class="formulario">
+        <h2>Nuevo post</h2>
+        <p>
+            Completa los campos para publicar un post
+        </p>
+
+        <form id="postForm">
+
+            <label>
+                Título
+                <input id="title" name="title" type="text" 
+                       placeholder="Ej: Mi primer post" required />
+            </label>
+
+            <label>
+                Contenido
+                <input id="content" name="content" type="text" 
+                       placeholder="Ej: Este es mi primer post..." required />
+            </label>
+ 
+            <button type="submit">Publicar</button>
+
+        </form> 
+
+    </main>
+
+    <section id="uiState2">
+        <p id="status" >Estado: esperando envío…</p>
+    </section>
+ 
+    <footer>
+        <small>
+            
+        </small>
+    </footer>
+
+</body>
+</html>
