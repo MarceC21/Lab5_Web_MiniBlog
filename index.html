@@ -17,20 +17,20 @@
 
      <!-- Búsqueda -->
     <section id="search">
-        <input type="text" id="searchInput" 
-            placeholder="Buscar por título o contenido..." />
+        <input type="text" id="searchInput"
+            placeholder="Buscar por título o contenido...">
         <button id="searchButton">Buscar</button>
     </section>
 
         
     <section id="uiState1">
-        <p id="status" >Estado: esperando búsqueda…</p>
+        <p id="searchStatus">Estado: esperando búsqueda…</p>
     </section>
 
 
     <!-- Para las lista de publicaciones-->
 
-    <section>
+    <section id="postsSection">
         <h2>Publicaciones</h2>
         <ul id="postsList"></ul>
     </section>
@@ -46,33 +46,28 @@
 
         <form id="postForm">
 
-            <label>
-                Título
-                <input id="title" name="title" type="text" 
-                       placeholder="Ej: Mi primer post" required />
-            </label>
+                <label for="title">Título</label>
+                <input id="title" name="title" type="text"
+                    placeholder="Ej: Mi primer post" required>
 
-            <label>
-                Contenido
-                <input id="content" name="content" type="text" 
-                       placeholder="Ej: Este es mi primer post..." required />
-            </label>
- 
-            <button type="submit">Publicar</button>
+                <label for="content">Contenido</label>
+                <textarea id="content" name="content"
+                        placeholder="Ej: Este es mi primer post..." required></textarea>
 
-        </form> 
+                <button type="submit">Publicar</button>
 
+            </form>
     </main>
 
     <section id="uiState2">
-        <p id="status" >Estado: esperando envío…</p>
+        <p id="postStatus">Estado: esperando envío…</p>
     </section>
  
     <footer>
         <small>
-            
+            MiniBlog
         </small>
     </footer>
-
+<script src="js/app.js"></script>
 </body>
 </html>
