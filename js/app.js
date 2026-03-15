@@ -11,6 +11,9 @@ const form = document.querySelector("#postForm");
 const searchInput = document.querySelector("#searchInput");
 const searchButton = document.querySelector("#searchButton");
 
+const newPostBtn = document.querySelector("#newPostBtn");
+const formContainer = document.querySelector("#formContainer");
+
 // Estados de UI
 const postStatusEl = document.querySelector("#postStatus");
 const searchStatusEl = document.querySelector("#searchStatus");
@@ -18,6 +21,14 @@ const searchStatusEl = document.querySelector("#searchStatus");
 
 // Lista de posts obtenidos de la API
 let posts = [];
+
+
+//Función para mostrar el formulario de creación de posts al hacer click en el botón "Nuevo post"
+newPostBtn.addEventListener("click", () => {
+    formContainer.style.display = "block";
+    postStatusEl.textContent = "Estado: escribiendo post...";
+});
+
 
 
 // Función para renderizar los posts 
@@ -59,6 +70,8 @@ async function loadPosts() {
     }
 }
 
+
+// Función para manejar el envío del formulario de creación de posts
 form.addEventListener("submit", async (event) => {
 
   event.preventDefault();
@@ -69,23 +82,27 @@ form.addEventListener("submit", async (event) => {
   const nuevoPost = {
     title: title,
     body: content,
-    userId: 1 // Asignamos un userId fijo para este ejemplo
+    userId: 1
   };
 
   try {
 
+    postStatusEl.textContent = "Estado: publicando...";
+
     const createdPost = await addPost(nuevoPost);
 
-    posts.unshift(createdPost); 
-    // lo agregamos al inicio para que se vea primero
+    posts.unshift(createdPost);
 
     renderPosts(posts);
 
     form.reset();
-
-    postStatusEl.textContent = "Estado: post publicado correctamente";
-
+    
     console.log("Nuevo post creado:", createdPost);
+
+    formContainer.style.display = "none";
+
+    postStatusEl.textContent = "Estado: esperando publicación...";
+    
 
   } catch (error) {
 
@@ -96,6 +113,7 @@ form.addEventListener("submit", async (event) => {
   }
 
 });
+
 
 renderIdle();
 loadPosts();
