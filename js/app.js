@@ -59,5 +59,43 @@ async function loadPosts() {
     }
 }
 
+form.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+  const title = form.elements["title"].value;
+  const content = form.elements["content"].value;
+
+  const nuevoPost = {
+    title: title,
+    body: content,
+    userId: 1 // Asignamos un userId fijo para este ejemplo
+  };
+
+  try {
+
+    const createdPost = await addPost(nuevoPost);
+
+    posts.unshift(createdPost); 
+    // lo agregamos al inicio para que se vea primero
+
+    renderPosts(posts);
+
+    form.reset();
+
+    postStatusEl.textContent = "Estado: post publicado correctamente";
+
+    console.log("Nuevo post creado:", createdPost);
+
+  } catch (error) {
+
+    console.error("Error al crear el post:", error);
+
+    postStatusEl.textContent = "Estado: error al publicar";
+
+  }
+
+});
+
 renderIdle();
 loadPosts();
