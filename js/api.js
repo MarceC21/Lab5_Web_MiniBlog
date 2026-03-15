@@ -16,7 +16,7 @@ export async function getPosts() {
 
 // Buscar posts por texto
 export async function searchPosts(query) {
-    const response = await fetch(`${BASE_URL}?q=${encodeURIComponent(query)}`);
+    const response = await fetch(`${BASE_URL}/search?q=${encodeURIComponent(query)}`);
 
     if (!response.ok) {
         throw new Error("Error al buscar posts");

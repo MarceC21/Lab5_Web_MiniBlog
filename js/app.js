@@ -96,7 +96,7 @@ form.addEventListener("submit", async (event) => {
     renderPosts(posts);
 
     form.reset();
-    
+
     console.log("Nuevo post creado:", createdPost);
 
     formContainer.style.display = "none";
@@ -112,6 +112,50 @@ form.addEventListener("submit", async (event) => {
 
   }
 
+});
+
+// Función para manejar la búsqueda de posts
+searchButton.addEventListener("click", async () => {
+
+    const query = searchInput.value.trim();
+
+    if (query === "") {
+        renderPosts(posts);
+        searchStatusEl.textContent = "Estado: mostrando todos los posts";
+        return;
+    }
+
+    searchStatusEl.textContent = "Estado: buscando...";
+
+    try {
+
+        const data = await searchPosts(query);
+        const results = data.posts;
+
+        if (results.length === 0) {
+            searchStatusEl.textContent = "Estado: no se encontraron resultados";
+            renderPosts([]);
+            return;
+        }
+
+        renderPosts(results);
+
+        searchStatusEl.textContent = `Estado: ${results.length} resultado(s) encontrados`;
+
+    } catch (error) {
+
+        console.error("Error al buscar posts:", error);
+        searchStatusEl.textContent = "Estado: error al buscar";
+
+    }
+
+});
+
+//Función extra para permitir buscar al presionar Enter en el input de búsqueda :S
+searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        searchButton.click();
+    }
 });
 
 
