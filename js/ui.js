@@ -1,49 +1,48 @@
-// Aqui estaran todos los UI states 
-
+// Aqui estaran todos los UI states
+ 
 // Contenedor principal donde se renderizan los posts
 const container = document.getElementById("postsContainer");
-
+ 
 // Estado inicial (idle)
-// Se muestra antes de hacer cualquier petición
-export function renderIdle(){
+export function renderIdle() {
     container.innerHTML = `
-        <p>Presiona el botón para cargar los posts.</p>
+        <li>
+            <p>Los posts aparecerán aquí</p>
+        </li>
     `;
 }
-
-
+ 
 // Estado de carga
-// Se muestra mientras se obtienen datos de la API
-export function renderLoading(){
+export function renderLoading() {
     container.innerHTML = `
-        <p>Cargando posts...</p>
+        <li>
+            <div class="spinner"></div>
+            <p>Cargando posts...</p>
+        </li>
     `;
 }
-
-
-// Estado de éxito
-// Aquí se mostrarán los posts cuando la API responda correctamente
-export function renderSuccess(postsHTML){
+ 
+// Estado de éxito — recibe HTML de los posts
+export function renderSuccess(postsHTML) {
     container.innerHTML = postsHTML;
 }
-
-
+ 
 // Estado vacío
-// Cuando la API responde pero no hay resultados
-export function renderEmpty(){
+export function renderEmpty() {
     container.innerHTML = `
-        <p>No hay posts disponibles.</p>
+        <li>
+            <p>No se encontraron posts</p>
+        </li>
     `;
 }
-
-
-// Estado de error
-// Incluye botón de retry para volver a intentar la petición
-export function renderError(retryCallback){
+ 
+// Estado de error con botón retry
+export function renderError(retryCallback) {
     container.innerHTML = `
-        <p>Error al cargar los posts.</p>
-        <button id="retryBtn">Reintentar</button>
+        <li>
+            <p>Ocurrió un error al cargar los posts.</p>
+            <button id="retryBtn">Reintentar</button>
+        </li>
     `;
-
     document.getElementById("retryBtn").addEventListener("click", retryCallback);
 }

@@ -1,77 +1,72 @@
 <!-- MiniBlog -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MiniBlog</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body> 
-
-    <!-- Descripción -->
+ 
+<body>
+ 
+    <!-- HEADER: título + subtítulo con fondo propio -->
     <header>
         <h1>MiniBlog</h1>
         <h2>Explora y comparte</h2>
     </header>
-
-     <!-- Búsqueda -->
-    <section id="search">
-        <input type="text" id="searchInput"
-            placeholder="Buscar por título o contenido...">
-        <button id="searchButton">Buscar</button>
-    </section>
-
-        
-    <section id="uiState1">
-        <p id="searchStatus">Estado: esperando búsqueda…</p>
-    </section>
-
-
-    <!-- Para las lista de publicaciones-->
-
-    <section id="postsSection">
-        <h2>Publicaciones</h2>
-        <ul id="postsContainer"></ul>
-    </section>
-
-    <!-- Botón para desplegar el formulario de creación de posts-->
-    <section id="createPost">
-        <button id="newPostBtn">Nuevo post</button>
-    </section>
-
-    <!-- Formulario para crear una nueva publicación-->
-    <main class="formulario" id="formContainer" style="display:none;">
-        <h2>Nuevo post</h2>
-        <p>
-            Completa los campos para publicar un post
-        </p>
-
-        <form id="postForm">
-
+ 
+    <!-- CONTENEDOR PRINCIPAL DE PÁGINA -->
+    <div class="page-wrapper">
+ 
+        <!-- BÚSQUEDA -->
+        <section id="search">
+            <input type="text" id="searchInput"
+                placeholder="Buscar por título o contenido...">
+            <button id="searchButton">Buscar</button>
+        </section>
+ 
+        <!-- UI STATE: estado de la búsqueda -->
+        <div class="ui-state-bar" id="searchStatus">Estado: esperando búsqueda…</div>
+ 
+        <!-- BOTÓN NUEVO POST -->
+        <section id="createPost">
+            <button id="newPostBtn">Nuevo post</button>
+        </section>
+ 
+        <!-- FORMULARIO (se despliega al hacer click) -->
+        <div id="formContainer">
+            <h2>Nuevo post</h2>
+            <p>Completa los campos para publicar una entrada.</p>
+ 
+            <form id="postForm">
                 <label for="title">Título</label>
                 <input id="title" name="title" type="text"
                     placeholder="Ej: Mi primer post" required>
-
+ 
                 <label for="content">Contenido</label>
                 <textarea id="content" name="content"
-                        placeholder="Ej: Este es mi primer post..." required></textarea>
-
+                    placeholder="Ej: Este es mi primer post..." required></textarea>
+ 
                 <button type="submit">Publicar</button>
-
             </form>
-    </main>
-
-    <section id="uiState2">
-        <p id="postStatus">Estado: esperando envío…</p>
-    </section>
-
+        </div>
+ 
+        <!-- UI STATE: estado del envío del formulario -->
+        <div class="ui-state-bar" id="postStatus">Estado: esperando envío…</div>
+ 
+        <!-- LISTA DE PUBLICACIONES -->
+        <section id="postsSection">
+            <h2>Publicaciones</h2>
+            <ul id="postsContainer"></ul>
+        </section>
+ 
+    </div><!-- /page-wrapper -->
  
     <footer>
-        <small>
-            MiniBlog
-        </small>
+        <small>MiniBlog &copy; 2026 — UVG Sistemas y Tecnologías Web</small>
     </footer>
-<script type="module" src="js/app.js"></script>
+ 
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
