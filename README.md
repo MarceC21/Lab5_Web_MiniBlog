@@ -69,7 +69,25 @@ No se utilizaron frameworks ni librerías externas.
 ---
 
 ## Estructura del proyecto
-
+mini-blog/
+│
+│── index.html
+│
+├── css/
+│ └── style.css
+│
+├── js/
+│ ├── app.js
+│ ├── api.js
+│ └── ui.js
+│
+├── assets/
+│ ├── captura1.png
+│ ├── captura2.png
+│ 
+│
+├── README.md
+└── .gitignore
 
 ## Instalación y uso
 
@@ -98,14 +116,18 @@ https://marcec21.github.io/Lab5_Web_MiniBlog/
 ---
 
 ## Capturas de pantalla
+-Pantalla principal
+![Captura1](assets/captura1.png)
 
+-Crear Post
+![Captura2](assets/captura2.png)
 
 
 ---
 
 ## Video demostrativo
 
-
+https://youtu.be/VO2VT6swOao
 
 ---
 
